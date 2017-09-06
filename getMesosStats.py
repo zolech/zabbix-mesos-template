@@ -11,7 +11,10 @@ def get_metric(host, port, metric):
             'http://' + host + ':' + port + '/metrics/snapshot')
         data = json.load(response)
         # print json.dumps(data, indent=4, sort_keys=True)
-        print data[metric]
+        try:
+            print data[metric]
+        except KeyError:
+            print "ZBX_NOT_SUPPORTED"
 
 
 if __name__ == '__main__':

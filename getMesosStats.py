@@ -8,7 +8,8 @@ import argparse
 
 def get_metric(host, port, metric):
         response = urllib2.urlopen(
-            'http://' + host + ':' + port + '/metrics/snapshot')
+            'http://{host}:{port}/metrics/snapshot'.format(host=host, port=port)
+        )
         data = json.load(response)
         # print json.dumps(data, indent=4, sort_keys=True)
         try:
